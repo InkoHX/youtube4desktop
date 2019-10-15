@@ -7,12 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Writing .npmrc
-      run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
     - name: Use Node.js v10
       uses: actions/setup-node@v1
       with:
-        node-version: 10
+        node-version: 10.x
+        npm-registry:
+          - registry: https://npm.pkg.github.com
+            scope: "@inkohx"
+            token: ${{ secrets.GITHUB_TOKEN }}
     - name: Install deps.
       run: npm install
     - name: lint
