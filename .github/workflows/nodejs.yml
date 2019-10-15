@@ -11,10 +11,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 10.x
-        npm-registry:
-          - registry: https://npm.pkg.github.com
-            scope: "@inkohx"
-            token: ${{ secrets.GITHUB_TOKEN }}
+        registry: https://npm.pkg.github.com
+        scope: "@inkohx"
+        token: ${{ secrets.GITHUB_TOKEN }}
     - name: Install deps.
       run: npm install
     - name: lint
