@@ -1,23 +1,19 @@
 {
-  "name": "youtube-desktop",
+  "name": "@inkohx/youtube4desktop",
   "main": "dist/index.js",
   "version": "0.0.1",
   "description": "YouTube for Desktop",
   "license": "MIT",
   "copyright": "Copyright © 2019 InkoHX",
-  "homepage": "https://github.com/InkoHX/youtube-desktop",
+  "homepage": "https://github.com/InkoHX/youtube4desktop",
   "bugs": {
-    "url": "https://github.com/InkoHX/youtube-desktop/issues"
+    "url": "https://github.com/InkoHX/youtube4desktop/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/InkoHX/youtube-desktop.git"
+    "url": "git+https://github.com/InkoHX/youtube4desktop.git"
   },
-  "author": {
-    "name": "InkoHX",
-    "email": "inkohx@gmail.com",
-    "url": "https://twitter.com/InkoHX"
-  },
+  "author": "InkoHX (inkohx@gmail.com)",
   "scripts": {
     "lint": "eslint --ext .ts --ignore-path .gitignore ./src",
     "lint:fix": "eslint --ext .ts --ignore-path .gitignore ./src --fix",
