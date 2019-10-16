@@ -37,7 +37,7 @@ jobs:
     - name: Writing .npmrc
       run: |
         chcp
-        chcp 65001
+        chcp 932
         echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >>  %USERPROFILE%\.npmrc
     - name: Use Node.js v10.x
       uses: actions/setup-node@v1
