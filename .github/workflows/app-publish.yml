@@ -29,6 +29,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
   windows:
+    needs: [linux]
     runs-on: windows-latest
     steps:
     - name: Checkout
@@ -54,6 +55,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
   mac:
+    needs: [windows]
     runs-on: macOS-latest
     steps:
     - name: Checkout
