@@ -25,7 +25,7 @@ jobs:
     - name: compile
       run: npm run compile:test
     - name: Publish
-      run: npm publish:linux
+      run: npm run publish:linux
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   windows:
@@ -34,9 +34,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
     - name: Writing .npmrc
-      run: |
-        chcp 65001
-        echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+      run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
     - name: Use Node.js v10.x
       uses: actions/setup-node@v1
       with:
@@ -49,7 +47,7 @@ jobs:
     - name: compile
       run: npm run compile:test
     - name: Publish
-      run: npm publish:win
+      run: npm run publish:win
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   mac:
@@ -71,6 +69,6 @@ jobs:
     - name: compile
       run: npm run compile:test
     - name: Publish
-      run: npm publish:mac
+      run: npm run publish:mac
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
