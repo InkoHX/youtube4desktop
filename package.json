@@ -63,9 +63,9 @@
     "win": {
       "publisherName": "InkoHX",
       "target": [
-        {
-          "target": "nsis"
-        }
+        "nsis",
+        "msi",
+        "zip"
       ]
     },
     "linux": {
