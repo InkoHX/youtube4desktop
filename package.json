@@ -72,7 +72,6 @@
       "target": [
         "AppImage",
         "deb",
-        "rpm",
         "tar.gz"
       ]
     },
