@@ -34,7 +34,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
     - name: Writing .npmrc
-      run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >>  %USERPROFILE%/.npmrc
+      run: |
+        chcp
+        chcp 65001
+        echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >>  %USERPROFILE%/.npmrc
     - name: Use Node.js v10.x
       uses: actions/setup-node@v1
       with:
