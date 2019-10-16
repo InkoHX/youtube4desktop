@@ -1,0 +1,76 @@
+name: Release
+
+on:
+  push:
+    branches: 
+      - release/*
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Writing .npmrc
+      run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+    - name: Use Node.js v10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+        always-auth: true
+    - name: Install deps.
+      run: npm install
+    - name: lint
+      run: npm run lint
+    - name: compile
+      run: npm run compile:test
+    - name: Publish
+      run: npm publish:linux
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  windows:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Writing .npmrc
+      run: |
+        chcp 65001
+        echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+    - name: Use Node.js v10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+        always-auth: true
+    - name: Install deps.
+      run: npm install
+    - name: lint
+      run: npm run lint
+    - name: compile
+      run: npm run compile:test
+    - name: Publish
+      run: npm publish:win
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  mac:
+    runs-on: macOS-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Writing .npmrc
+      run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+    - name: Use Node.js v10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+        always-auth: true
+    - name: Install deps.
+      run: npm install
+    - name: lint
+      run: npm run lint
+    - name: compile
+      run: npm run compile:test
+    - name: Publish
+      run: npm publish:mac
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
