@@ -38,11 +38,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '10.x'
-        always-auth: true
-    - name: Writing .npmrc
-      run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ./.npmrc
+        scope: '@inkohx'
     - name: Install deps.
       run: npm install
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: lint
       run: npm run lint
     - name: compile
