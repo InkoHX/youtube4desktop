@@ -13,7 +13,11 @@
     "type": "git",
     "url": "git+https://github.com/InkoHX/youtube4desktop.git"
   },
-  "author": "InkoHX (inkohx@gmail.com)",
+  "author": {
+    "name": "InkoHX",
+    "email": "inkohx@gmail.com",
+    "url": "https://github.com/InkoHX"
+  },
   "scripts": {
     "lint": "eslint --ext .ts --ignore-path .gitignore ./src",
     "lint:fix": "eslint --ext .ts --ignore-path .gitignore ./src --fix",
