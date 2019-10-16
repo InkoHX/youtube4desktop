@@ -24,6 +24,10 @@
     "build:win": "npm run compile && electron-builder --win --x64 --ia32",
     "build:linux": "npm run compile && electron-builder --linux --x64 --ia32",
     "build:mac": "npm run compile && export CSC_IDENTITY_AUTO_DISCOVERY=false && electron-builder --mac --x64 --ia32",
+    "build": "npm run compile && export CSC_IDENTITY_AUTO_DISCOVERY=false && electron-builder --win --mac --linux --x64 --ia32",
+    "publish:win": "npm run compile && electron-builder --win --x64 --ia32 --publish always",
+    "publish:linux": "npm run compile && electron-builder --linux --x64 --ia32 --publish always",
+    "publish:mac": "npm run compile && export CSC_IDENTITY_AUTO_DISCOVERY=false && electron-builder --mac --x64 --ia32 --publish always",
     "publish": "npm run compile && export CSC_IDENTITY_AUTO_DISCOVERY=false && electron-builder --win --mac --linux --x64 --ia32 --publish always"
   },
   "dependencies": {
