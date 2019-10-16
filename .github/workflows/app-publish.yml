@@ -20,10 +20,6 @@ jobs:
         always-auth: true
     - name: Install deps.
       run: npm install
-    - name: lint
-      run: npm run lint
-    - name: compile
-      run: npm run compile:test
     - name: Publish
       run: npm run publish:linux
       env:
@@ -44,10 +40,6 @@ jobs:
       run: npm install
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: lint
-      run: npm run lint
-    - name: compile
-      run: npm run compile:test
     - name: Publish
       run: npm run publish:win
       env:
@@ -67,10 +59,6 @@ jobs:
         always-auth: true
     - name: Install deps.
       run: npm install
-    - name: lint
-      run: npm run lint
-    - name: compile
-      run: npm run compile:test
     - name: Publish
       run: npm run publish:mac
       env:
