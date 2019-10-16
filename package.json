@@ -64,7 +64,6 @@
       "publisherName": "InkoHX",
       "target": [
         "nsis",
-        "msi",
         "zip"
       ]
     },
