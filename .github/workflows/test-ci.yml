@@ -17,7 +17,7 @@ jobs:
         registry-url: 'https://npm.pkg.github.com/'
         scope: '@inkohx'
     - name: Install deps.
-      run: npm install
+      run: npm ci
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: lint
