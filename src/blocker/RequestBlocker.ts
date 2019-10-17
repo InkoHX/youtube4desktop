@@ -38,6 +38,10 @@ const blacklist: Array<Filter> = [
     type: 'image'
   },
   {
+    url: '/generate_204',
+    type: 'other'
+  },
+  {
     url: '/log_event?'
   },
   {
@@ -45,10 +49,22 @@ const blacklist: Array<Filter> = [
   },
   {
     url: 'youtube.com/api/stats/ads?'
+  },
+  {
+    url: '/pagead/lvz?'
+  },
+  {
+    url: '=adunit&'
+  },
+  {
+    url: 'googlesyndication.com/'
+  },
+  {
+    url: '2mdn.net/'
   }
 ]
 
-export function isAdvertisement(details: OnBeforeRequestDetails): boolean {
+export function hasBlacklist(details: OnBeforeRequestDetails): boolean {
   let advertisement = false
   blacklist.map((filter) => {
     const black = details.url.includes(filter.url)
