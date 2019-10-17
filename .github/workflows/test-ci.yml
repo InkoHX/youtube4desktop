@@ -18,6 +18,8 @@ jobs:
         scope: '@inkohx'
     - name: Install deps.
       run: npm install
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: lint
       run: npm run lint
     - name: compile
