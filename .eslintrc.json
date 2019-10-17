@@ -1,4 +1,7 @@
 {
+    "env": {
+        "browser": true
+    },
     "extends": "@inkohx/eslint-config-codestyle/typescript",
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
