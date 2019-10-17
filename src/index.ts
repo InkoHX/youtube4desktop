@@ -1,7 +1,8 @@
 import { BrowserWindow, app } from 'electron'
 import { autoUpdater } from 'electron-updater'
-import { isAdvertisement } from './blocker/BlockRequest'
+import { hasBlacklist } from './blocker/RequestBlocker'
 import logger from 'electron-log'
+import { resolve } from 'path'
 import windowStateKeeper from 'electron-window-state'
 
 let mainWindow: BrowserWindow | null
@@ -20,7 +21,12 @@ async function createWindow(): Promise<void> {
     width: mainWindowState.width,
     height: mainWindowState.height,
     x: mainWindowState.x,
-    y: mainWindowState.y
+    y: mainWindowState.y,
+    show: false,
+    webPreferences: {
+      preload: resolve(__dirname, 'preload.js'),
+      nodeIntegration: true
+    }
   })
 
   await mainWindow.loadURL('https://youtube.com')
@@ -32,12 +38,16 @@ async function createWindow(): Promise<void> {
   mainWindowState.manage(mainWindow)
 
   mainWindow.webContents.session.webRequest.onBeforeRequest((details, callback) => {
-    const isCancel = isAdvertisement(details)
+    const isCancel = hasBlacklist(details)
     callback({ cancel: isCancel })
   })
 
   mainWindow.on('closed', () => {
     mainWindow = null
+  })
+
+  mainWindow.on('ready-to-show', () => {
+    if (mainWindow) mainWindow.show()
   })
 }
 
