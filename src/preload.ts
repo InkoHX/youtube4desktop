@@ -1,5 +1,5 @@
 import { domBlocker } from './blocker/DOMBlocker'
 
-window.addEventListener('load', () => {
+window.onload = (): void => {
   domBlocker(document)
-})
+}
