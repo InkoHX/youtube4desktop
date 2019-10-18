@@ -32,9 +32,6 @@ const blacklist: Array<DOMFilter> = [
 export function domBlocker(document: Document): void {
   blacklist.map((filter) => {
     const element = document.querySelector(filter.query)
-    if (element && element.firstChild) {
-      element.removeChild(element.firstChild)
-      console.info(`Remove DOM: ${filter.query}`)
-    }
+    if (element && element.firstChild) element.removeChild(element.firstChild)
   })
 }
