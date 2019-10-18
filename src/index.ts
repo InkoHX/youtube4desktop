@@ -52,7 +52,9 @@ async function createWindow(): Promise<void> {
 }
 
 app.on('ready', () => {
-  createWindow().catch((error) => logger.error(error))
+  createWindow()
+    .then(() => autoUpdater.checkForUpdatesAndNotify())
+    .catch((error) => logger.error(error))
 })
 
 app.on('window-all-closed', () => {
