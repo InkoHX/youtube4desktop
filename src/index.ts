@@ -1,9 +1,12 @@
 import { BrowserWindow, app } from 'electron'
 import { autoUpdater } from 'electron-updater'
+import debug from 'electron-debug'
 import { hasBlacklist } from './blocker/RequestBlocker'
 import logger from 'electron-log'
 import { resolve } from 'path'
 import windowStateKeeper from 'electron-window-state'
+
+debug()
 
 let mainWindow: BrowserWindow | null
 
@@ -33,7 +36,6 @@ async function createWindow(): Promise<void> {
 
   mainWindow.setTitle('YouTube - Desktop')
   mainWindow.setMenu(null)
-  if (process.env.NODE_ENV === 'development') mainWindow.webContents.openDevTools()
 
   mainWindowState.manage(mainWindow)
 
