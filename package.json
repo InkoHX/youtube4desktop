@@ -1,7 +1,7 @@
 {
   "name": "youtube4desktop",
   "main": "dist/index.js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "YouTube for Desktop",
   "license": "MIT",
   "copyright": "Copyright © 2019 InkoHX",
