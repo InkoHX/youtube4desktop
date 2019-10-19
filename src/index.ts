@@ -11,6 +11,7 @@ debug()
 let mainWindow: BrowserWindow | null
 
 autoUpdater.logger = logger
+autoUpdater.checkForUpdatesAndNotify().catch((error) => logger.error(error))
 
 async function createWindow(): Promise<void> {
   const mainWindowState = windowStateKeeper({
@@ -26,8 +27,7 @@ async function createWindow(): Promise<void> {
     y: mainWindowState.y,
     show: false,
     webPreferences: {
-      preload: resolve(__dirname, 'preload.js'),
-      nodeIntegration: true
+      preload: resolve(__dirname, 'preload.js')
     }
   })
 
@@ -54,7 +54,6 @@ async function createWindow(): Promise<void> {
 
 app.on('ready', () => {
   createWindow().catch((error) => logger.error(error))
-  autoUpdater.checkForUpdatesAndNotify().catch((error) => logger.error(error))
 })
 
 app.on('window-all-closed', () => {

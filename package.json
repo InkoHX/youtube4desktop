@@ -1,5 +1,5 @@
 {
-  "name": "@inkohx/youtube4desktop",
+  "name": "youtube4desktop",
   "main": "dist/index.js",
   "version": "0.0.3",
   "description": "YouTube for Desktop",
