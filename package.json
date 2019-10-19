@@ -66,7 +66,6 @@
       "github"
     ],
     "win": {
-      "publisherName": "InkoHX",
       "target": [
         "nsis",
         "zip"

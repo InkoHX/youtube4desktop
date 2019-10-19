@@ -25,7 +25,6 @@ async function createWindow(): Promise<void> {
     height: mainWindowState.height,
     x: mainWindowState.x,
     y: mainWindowState.y,
-    show: false,
     webPreferences: {
       preload: resolve(__dirname, 'preload.js')
     }
@@ -45,10 +44,6 @@ async function createWindow(): Promise<void> {
 
   mainWindow.on('closed', () => {
     mainWindow = null
-  })
-
-  mainWindow.on('ready-to-show', () => {
-    if (mainWindow) mainWindow.show()
   })
 }
 
