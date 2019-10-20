@@ -7,6 +7,12 @@ const blacklist: Array<DOMFilter> = [
     query: '#masthead-ad'
   },
   {
+    query: '#merch-shelf'
+  },
+  {
+    query: '#ticker.ytd-masthead'
+  },
+  {
     query: '.ytp-ce-playlist'
   },
   {
@@ -26,6 +32,18 @@ const blacklist: Array<DOMFilter> = [
   },
   {
     query: '#secondary-links'
+  },
+  {
+    query: '#pla-shelf'
+  },
+  {
+    query: '#offer-module'
+  },
+  {
+    query: '.ytp-ce-element'
+  },
+  {
+    query: '.annotation.iv-branding'
   }
 ]
 

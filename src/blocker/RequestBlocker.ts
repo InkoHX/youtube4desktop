@@ -34,12 +34,7 @@ const blacklist: Array<Filter> = [
     url: 'youtube.com/api/stats/playback?'
   },
   {
-    url: '/generate_204',
-    type: 'image'
-  },
-  {
-    url: '/generate_204',
-    type: 'other'
+    url: '/generate_204'
   },
   {
     url: '/log_event?'

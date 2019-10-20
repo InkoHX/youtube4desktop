@@ -1,4 +1,4 @@
-import { BrowserWindow, app } from 'electron'
+import { BrowserWindow, app, shell } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import debug from 'electron-debug'
 import { hasBlacklist } from './blocker/RequestBlocker'
@@ -25,6 +25,7 @@ async function createWindow(): Promise<void> {
     height: mainWindowState.height,
     x: mainWindowState.x,
     y: mainWindowState.y,
+    show: false,
     webPreferences: {
       preload: resolve(__dirname, 'preload.js')
     }
@@ -42,8 +43,23 @@ async function createWindow(): Promise<void> {
     callback({ cancel: isCancel })
   })
 
+  mainWindow.webContents.on('new-window', (event, url) => {
+    if (url.includes('youtube.com') && mainWindow) {
+      event.preventDefault()
+      mainWindow.loadURL(url).catch((error) => logger.error(error))
+    }
+    if (!url.includes('youtube.com')) {
+      event.preventDefault()
+      shell.openExternal(url).catch((error) => logger.error(error))
+    }
+  })
+
   mainWindow.on('closed', () => {
     mainWindow = null
+  })
+
+  mainWindow.on('ready-to-show', () => {
+    if (mainWindow) mainWindow.show()
   })
 }
 
